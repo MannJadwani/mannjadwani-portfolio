@@ -7,19 +7,17 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       {/* Hero Section with Spline 3D Scene */}
       <section className="flex-1 relative justify-center items-center flex overflow-hidden">
-  <div className="md:absolute inset-0 z-0 h-full w-full justify-center items-center"
-      style={{
-        background: "radial-gradient(circle at bottom right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)",
-      }}
+  <div className="md:absolute inset-0 z-0  w-full justify-center items-center overflow-hidden h-[500px] md:h-full "
+     
   
   >
+    
     <Spline scene="https://prod.spline.design/gV1jWLm45Jvm4eNh/scene.splinecode" />
-    {/* Gradient Overlay */}
-  <div className="md:absolute inset-0 z-10 pointer-events-none">
-    <div
-      className="w-full h-full"
+    <div className="block md:hidden w-full h-[50vh] absolute inset-0 z-20 top-120 "
+    style={{
+      background: "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,1))",
+    }}
     ></div>
-  </div>
   </div>
   
   
@@ -32,10 +30,10 @@ export default function Home() {
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <AnimatedLink
           href="/contact"
-          className="px-10 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white font-bold text-lg hover:bg-white/20 hover:border-white/30 hover:text-white hover:shadow-xl hover:shadow-white/25 transition-all duration-500 ease-out relative overflow-hidden group transform hover:scale-105"
+          className="inline-block px-10 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white font-bold text-lg hover:bg-white/20 hover:border-white/30 hover:text-white hover:shadow-xl hover:shadow-white/25 transition-all duration-500 ease-out relative overflow-hidden group"
         >
           <span className="relative z-10">Contact Me</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none"></div>
         </AnimatedLink>
       </div>
 

@@ -1,6 +1,7 @@
 import { ArrowLeft, ExternalLink, Github, Star, Zap, Database, Brain, Smartphone, Globe, Lock, TrendingUp, Code, Layers, Settings, Monitor, Cpu } from 'lucide-react';
 import Link from 'next/link';
 import AnimatedLink from '../components/AnimatedLink';
+import MobileMenu from '../components/MobileMenu';
 
 export default function Projects() {
   const projects = [
@@ -12,7 +13,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["React", "AI Agents", "WebSocket", "Node.js"],
       status: "Live",
-      icon: <Brain className="w-8 h-8" />,
+      icon: <Brain className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-blue-500",
       link: "https://matrix.neuralarc.in",
       github: null
@@ -24,7 +25,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["Next.js", "AI/ML", "Cloud", "API"],
       status: "Live",
-      icon: <Brain className="w-8 h-8" />,
+      icon: <Brain className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-blue-600",
       link: "https://neuralarc.in",
       github: null
@@ -36,7 +37,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["React", "FinTech", "Analytics", "CRM"],
       status: "Live",
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-500",
       link: "https://beaconwealth.in",
       github: null
@@ -48,7 +49,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["Next.js", "International", "Finance", "CMS"],
       status: "Live",
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-600",
       link: "https://beaconmauritius.vercel.app",
       github: null
@@ -60,7 +61,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["React", "MENA", "Consulting", "CRM"],
       status: "Live",
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-700",
       link: "https://beaconarabiaconsulting.com",
       github: null
@@ -72,7 +73,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["Python", "AI/ML", "React", "Finance"],
       status: "Beta",
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-purple-500",
       link: "https://eqivision.vercel.app",
       github: null
@@ -84,7 +85,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["AI/ML", "Code Gen", "React", "VSCode"],
       status: "Live",
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-indigo-500",
       link: "https://codium.tech",
       github: null
@@ -96,7 +97,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["Next.js", "Vercel", "Analytics", "Finance"],
       status: "Beta",
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-orange-500",
       link: "https://indialeaguetables.vercel.app",
       github: null
@@ -108,7 +109,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["React", "Analytics", "Finance", "API"],
       status: "Live",
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-orange-600",
       link: "https://indialeaguetables.com",
       github: null
@@ -120,7 +121,7 @@ export default function Projects() {
       category: "Websites & Live Platforms",
       technologies: ["Next.js", "PostgreSQL", "TypeScript", "AWS"],
       status: "Live",
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-red-500",
       link: "https://debtcircle.com",
       github: null
@@ -134,7 +135,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "LLM", "AI", "API"],
       status: "Live",
-      icon: <Brain className="w-8 h-8" />,
+      icon: <Brain className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-blue-500",
       link: "https://accessallgpt.com",
       github: null
@@ -146,7 +147,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["React", "AI", "Collaboration", "WebSocket"],
       status: "Live",
-      icon: <Code className="w-8 h-8" />,
+      icon: <Code className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-cyan-500",
       link: "https://devbridge.neuralarc.in",
       github: null
@@ -158,7 +159,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "NLP", "AI", "Automation"],
       status: "Live",
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-500",
       link: "https://documentai.neuralarc.in",
       github: null
@@ -170,7 +171,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["React", "AI/ML", "Health", "Mobile"],
       status: "Live",
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Zap className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-red-500",
       link: "https://fitnessai.neuralarc.in",
       github: null
@@ -182,12 +183,23 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI/ML", "Finance", "React"],
       status: "Live",
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-purple-500",
       link: "https://eqivision.com",
       github: null
     },
-    
+    {
+      id: 16,
+      title: "CutZero",
+      description: "Zero-cost business automation platform reducing operational overhead with intelligent process optimization.",
+      category: "AI & Product Innovations",
+      technologies: ["React", "Automation", "Business", "AI"],
+      status: "Live",
+      icon: <Zap className="w-6 h-6 md:w-8 md:h-8" />,
+      color: "bg-yellow-500",
+      link: null,
+      github: null
+    },
     {
       id: 17,
       title: "AI Search Engine",
@@ -195,7 +207,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI/ML", "Search", "NLP"],
       status: "Beta",
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-indigo-500",
       link: null,
       github: null
@@ -207,9 +219,9 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI", "Design", "Automation"],
       status: "Live",
-      icon: <Layers className="w-8 h-8" />,
+      icon: <Layers className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-pink-500",
-    //   link: "https://ai-slides.com",
+      link: null,
       github: null
     },
     {
@@ -219,9 +231,9 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI/ML", "Reports", "Analytics"],
       status: "Live",
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-teal-500",
-    //   link: "https://ai-report-builder.com",
+      link: null,
       github: null
     },
     {
@@ -231,7 +243,7 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI", "Memory", "Workflows"],
       status: "Beta",
-      icon: <Brain className="w-8 h-8" />,
+      icon: <Brain className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-violet-500",
       link: null,
       github: null
@@ -243,9 +255,9 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "NLP", "Legal", "AI"],
       status: "Live",
-      icon: <Lock className="w-8 h-8" />,
+      icon: <Lock className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-gray-500",
-    //   link: "https://legal-document-ai.com",
+      link: null,
       github: null
     },
     {
@@ -255,9 +267,9 @@ export default function Projects() {
       category: "AI & Product Innovations",
       technologies: ["Python", "AI", "Audio", "TTS"],
       status: "Live",
-      icon: <Smartphone className="w-8 h-8" />,
+      icon: <Smartphone className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-emerald-500",
-    //   link: "https://auto-podcast.com",
+      link: null,
       github: null
     },
 
@@ -269,7 +281,7 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["Solidity", "Web3.js", "React", "Blockchain"],
       status: "Development",
-      icon: <Lock className="w-8 h-8" />,
+      icon: <Lock className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-orange-500",
       link: null,
       github: null
@@ -281,9 +293,9 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["React", "Analytics", "Finance", "PostgreSQL"],
       status: "Live",
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-red-500",
-    //   link: "https://arranger.debtcircle.com",
+      link: null,
       github: null
     },
     {
@@ -293,7 +305,7 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["React", "Node.js", "Admin", "CMS"],
       status: "Live",
-      icon: <Settings className="w-8 h-8" />,
+      icon: <Settings className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-gray-500",
       link: null,
       github: null
@@ -305,7 +317,7 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["Python", "Data", "Upload", "Processing"],
       status: "Live",
-      icon: <Cpu className="w-8 h-8" />,
+      icon: <Cpu className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-blue-500",
       link: null,
       github: null
@@ -317,9 +329,9 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["React", "Community", "Forum", "Social"],
       status: "Live",
-      icon: <Globe className="w-8 h-8" />,
+      icon: <Globe className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-500",
-    //   link: "https://forum.debtcircle.com",
+      link: null,
       github: null
     },
     {
@@ -329,7 +341,7 @@ export default function Projects() {
       category: "Data Platforms & Panels",
       technologies: ["React", "Sustainability", "Environment", "CMS"],
       status: "Live",
-      icon: <Layers className="w-8 h-8" />,
+      icon: <Layers className="w-6 h-6 md:w-8 md:h-8" />,
       color: "bg-green-600",
       link: "https://envifymedia.com",
       github: null
@@ -342,54 +354,57 @@ export default function Projects() {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
       {/* Glassmorphic floating elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-32 left-32 w-40 h-40 bg-white/3 backdrop-blur-3xl rounded-full"></div>
-        <div className="absolute top-20 right-20 w-32 h-32 bg-white/5 backdrop-blur-2xl rounded-full"></div>
-        <div className="absolute bottom-40 left-20 w-36 h-36 bg-white/4 backdrop-blur-3xl rounded-full"></div>
-        <div className="absolute bottom-32 right-32 w-28 h-28 bg-white/2 backdrop-blur-xl rounded-full"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-white/3 backdrop-blur-2xl rounded-full"></div>
+        <div className="absolute top-32 left-8 md:left-32 w-20 h-20 md:w-40 md:h-40 bg-white/3 backdrop-blur-3xl rounded-full"></div>
+        <div className="absolute top-20 right-8 md:right-20 w-16 h-16 md:w-32 md:h-32 bg-white/5 backdrop-blur-2xl rounded-full"></div>
+        <div className="absolute bottom-40 left-4 md:left-20 w-18 h-18 md:w-36 md:h-36 bg-white/4 backdrop-blur-3xl rounded-full"></div>
+        <div className="absolute bottom-32 right-8 md:right-32 w-14 h-14 md:w-28 md:h-28 bg-white/2 backdrop-blur-xl rounded-full"></div>
+        <div className="absolute top-1/2 left-1/4 w-12 h-12 md:w-24 md:h-24 bg-white/3 backdrop-blur-2xl rounded-full"></div>
       </div>
       
       {/* Decorative dots pattern */}
-      <div className="absolute top-8 left-8">
-        <div className="grid grid-cols-4 gap-2">
+      <div className="absolute top-4 left-4 md:top-8 md:left-8">
+        <div className="grid grid-cols-4 gap-1 md:gap-2">
           {[...Array(12)].map((_, i) => (
-            <div key={i} className="w-2 h-2 bg-white/30 rounded-full"></div>
+            <div key={i} className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/30 rounded-full"></div>
           ))}
         </div>
       </div>
 
       {/* Header */}
-      <div className="relative z-10 flex justify-between items-center p-8">
-        <div className="flex items-center space-x-4">
+      <div className="relative z-10 flex flex-col md:flex-row md:justify-between md:items-center p-4 md:p-8 space-y-4 md:space-y-0">
+        <div className="flex items-center justify-between md:justify-start">
           <AnimatedLink 
             href="/"
-            className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300"
+            className="flex items-center space-x-2 px-3 py-2 md:px-4 md:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm">Projects</span>
           </AnimatedLink>
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
         </div>
-        <div className="text-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
-          <span className="text-white font-medium">Mann Jadwani.</span>
+        <div className="text-center px-4 py-2 md:px-6 md:py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+          <span className="text-white font-medium text-sm md:text-base">Mann Jadwani.</span>
         </div>
-        <div className="text-white/60 text-sm px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">03</div>
+        <div className="hidden md:block text-white/60 text-sm px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">03</div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 px-8 py-16">
+      <div className="relative z-10 px-4 py-8 md:px-8 md:py-16">
         <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
-          <div className="text-center mb-16">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 relative overflow-hidden group">
+          <div className="text-center mb-8 md:mb-16">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <div className="relative z-10">
-                <div className="flex items-center justify-center space-x-4 mb-6">
-                  <h1 className="text-6xl font-bold text-white">My Projects</h1>
-                  <div className="p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl">
-                    <Code className="w-12 h-12 text-white" />
+                <div className="flex flex-col md:flex-row md:items-center md:justify-center space-y-4 md:space-y-0 md:space-x-4 mb-4 md:mb-6">
+                  <h1 className="text-3xl md:text-6xl font-bold text-white">My Projects</h1>
+                  <div className="self-center md:self-auto p-2 md:p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl md:rounded-2xl">
+                    <Code className="w-8 h-8 md:w-12 md:h-12 text-white" />
                   </div>
                 </div>
-                <p className="text-white/70 text-xl max-w-3xl mx-auto">
+                <p className="text-white/70 text-base md:text-xl max-w-3xl mx-auto">
                   Innovative solutions across AI, blockchain, and automation — each project designed to solve real problems and push technological boundaries.
                 </p>
               </div>
@@ -397,13 +412,13 @@ export default function Projects() {
           </div>
 
           {/* Category Filter */}
-          <div className="mb-12">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <div className="flex flex-wrap justify-center gap-3">
+          <div className="mb-8 md:mb-12">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-6">
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3">
                 {categories.map((category) => (
                   <button
                     key={category}
-                    className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300 relative overflow-hidden group"
+                    className="px-3 py-2 md:px-6 md:py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300 relative overflow-hidden group text-xs md:text-base"
                   >
                     <span className="relative z-10">{category}</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
@@ -414,20 +429,20 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {projects.map((project) => (
-              <div key={project.id} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group relative overflow-hidden">
+              <div key={project.id} className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group relative overflow-hidden">
                 {/* Glassmorphic shine effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 
                 <div className="relative z-10">
                   {/* Project Header */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div className={`${project.color} w-16 h-16 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="flex items-start justify-between mb-4 md:mb-6">
+                    <div className={`${project.color} w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300`}>
                       {project.icon}
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      <span className={`px-2 py-1 md:px-3 md:py-1 rounded-full text-xs font-medium ${
                         project.status === 'Live' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
                         project.status === 'Beta' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
                         'bg-blue-500/20 text-blue-400 border border-blue-500/30'
@@ -438,17 +453,17 @@ export default function Projects() {
                   </div>
 
                   {/* Project Content */}
-                  <div className="mb-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                      <span className="text-xs text-white/50 px-2 py-1 bg-white/5 rounded-full">{project.category}</span>
+                  <div className="mb-4 md:mb-6">
+                    <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:items-center md:justify-between mb-2 md:mb-3">
+                      <h3 className="text-lg md:text-xl font-bold text-white">{project.title}</h3>
+                      <span className="text-xs text-white/50 px-2 py-1 bg-white/5 rounded-full self-start md:self-auto">{project.category}</span>
                     </div>
-                    <p className="text-white/70 text-sm leading-relaxed mb-4">{project.description}</p>
+                    <p className="text-white/70 text-sm leading-relaxed mb-3 md:mb-4">{project.description}</p>
                     
                     {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2 mb-4 md:mb-6">
                       {project.technologies.map((tech, index) => (
-                        <span key={index} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs text-white/80">
+                        <span key={index} className="px-2 py-1 md:px-3 md:py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs text-white/80">
                           {tech}
                         </span>
                       ))}
@@ -456,16 +471,16 @@ export default function Projects() {
                   </div>
 
                   {/* Project Actions */}
-                  <div className="flex items-center space-x-3">
+                  <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3">
                     {project.link && (
                       <a 
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300 flex-1 justify-center"
+                        className="w-full sm:flex-1 flex items-center justify-center space-x-2 px-3 py-2 md:px-4 md:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg md:rounded-xl text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300"
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">View Live</span>
+                        <ExternalLink className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="text-xs md:text-sm">View Live</span>
                       </a>
                     )}
                     {project.github && (
@@ -473,10 +488,10 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-2 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition-all duration-300 flex-1 justify-center"
+                        className="w-full sm:flex-1 flex items-center justify-center space-x-2 px-3 py-2 md:px-4 md:py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg md:rounded-xl text-white/90 hover:bg-white/10 hover:text-white transition-all duration-300"
                       >
-                        <Github className="w-4 h-4" />
-                        <span className="text-sm">Code</span>
+                        <Github className="w-3 h-3 md:w-4 md:h-4" />
+                        <span className="text-xs md:text-sm">Code</span>
                       </a>
                     )}
                   </div>
@@ -486,26 +501,26 @@ export default function Projects() {
           </div>
 
           {/* Call to Action */}
-          <div className="mt-20">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 text-center relative overflow-hidden group">
+          <div className="mt-12 md:mt-20">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-3xl p-6 md:p-12 text-center relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               <div className="relative z-10">
-                <h2 className="text-4xl font-bold text-white mb-6">Have a Project in Mind?</h2>
-                <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+                <h2 className="text-2xl md:text-4xl font-bold text-white mb-4 md:mb-6">Have a Project in Mind?</h2>
+                <p className="text-white/70 text-base md:text-lg mb-6 md:mb-8 max-w-2xl mx-auto">
                   Let's collaborate on your next big idea. From concept to deployment, I'll help bring your vision to life.
                 </p>
-                <div className="flex flex-wrap justify-center gap-4">
+                <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
                   <a 
                     href="mailto:mann@neuralarc.in"
-                    className="flex items-center space-x-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white font-semibold hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:scale-105"
+                    className="flex items-center justify-center space-x-3 px-6 py-3 md:px-8 md:py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl md:rounded-2xl text-white font-semibold hover:bg-white/20 hover:border-white/30 transition-all duration-300 transform hover:scale-105"
                   >
-                    <span>Start a Project</span>
+                    <span className="text-sm md:text-base">Start a Project</span>
                   </a>
                   <AnimatedLink 
                     href="/about"
-                    className="flex items-center space-x-3 px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl text-white font-semibold hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105"
+                    className="flex items-center justify-center space-x-3 px-6 py-3 md:px-8 md:py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl md:rounded-2xl text-white font-semibold hover:bg-white/10 hover:border-white/20 transition-all duration-300 transform hover:scale-105"
                   >
-                    <span>Learn More</span>
+                    <span className="text-sm md:text-base">Learn More</span>
                   </AnimatedLink>
                 </div>
               </div>

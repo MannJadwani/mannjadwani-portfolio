@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <PageTransition>
-          {children}
+        {children}
         </PageTransition>
       </body>
     </html>
