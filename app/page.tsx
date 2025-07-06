@@ -1,17 +1,32 @@
 import Spline from '@splinetool/react-spline/next';
 import AnimatedLink from './components/AnimatedLink';
+import MobileMenu from './components/MobileMenu';
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section with Spline 3D Scene */}
-      <section className="flex-1 relative">
-        <div className="absolute inset-0 z-0">
-          <Spline
-            scene="https://prod.spline.design/gV1jWLm45Jvm4eNh/scene.splinecode"
-          />
-        </div>
-      </section>
+      <section className="flex-1 relative justify-center items-center flex overflow-hidden">
+  <div className="md:absolute inset-0 z-0 h-full w-full justify-center items-center"
+      style={{
+        background: "radial-gradient(circle at bottom right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%)",
+      }}
+  
+  >
+    <Spline scene="https://prod.spline.design/gV1jWLm45Jvm4eNh/scene.splinecode" />
+    {/* Gradient Overlay */}
+  <div className="md:absolute inset-0 z-10 pointer-events-none">
+    <div
+      className="w-full h-full"
+    ></div>
+  </div>
+  </div>
+  
+  
+</section>
+
+      {/* Mobile Menu Component */}
+      <MobileMenu />
 
       {/* Bottom Center Contact Button */}
       <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-10">
@@ -51,14 +66,6 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
             </AnimatedLink>
           </div>
-          
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/90 hover:bg-white/20 hover:border-white/30 hover:text-white hover:shadow-lg hover:shadow-white/20 transition-all duration-500 ease-out relative overflow-hidden group">
-            <svg className="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
-          </button>
         </div>
       </nav>
     </div>
