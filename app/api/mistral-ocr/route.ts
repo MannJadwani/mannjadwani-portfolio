@@ -3,11 +3,11 @@ export const runtime = 'nodejs';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { documentUrl, base64Data, includeImageBase64 = false, apiKey: clientKey } = body || {};
+    const { documentUrl, base64Data, includeImageBase64 = false } = body || {};
 
-    const apiKey = clientKey || process.env.MISTRAL_API_KEY;
+    const apiKey = process.env.MISTRAL_API_KEY;
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'Missing apiKey. Provide in body or set MISTRAL_API_KEY.' }), { status: 400 });
+      return new Response(JSON.stringify({ error: 'Server is missing MISTRAL_API_KEY environment variable.' }), { status: 500 });
     }
 
     if (!documentUrl && !base64Data) {

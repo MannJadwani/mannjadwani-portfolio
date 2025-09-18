@@ -2,12 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import AnimatedLink from '../../components/AnimatedLink';
-import { ArrowLeft, FileText, Image, KeyRound, Upload, Copy, Download, HelpCircle, X } from 'lucide-react';
-
-const LS_KEY = 'MISTRAL_API_KEY_UI';
+import { ArrowLeft, FileText, Image, Upload, Copy, Download } from 'lucide-react';
 
 export default function MistralOcrPage() {
-  const [apiKey, setApiKey] = useState('');
   const [ocrUrl, setOcrUrl] = useState('');
   const [fileDataUri, setFileDataUri] = useState<string>('');
   const [ocrIncludeImg, setOcrIncludeImg] = useState(false);
@@ -15,16 +12,6 @@ export default function MistralOcrPage() {
   const [ocrResult, setOcrResult] = useState<any>(null);
   const [ocrError, setOcrError] = useState<string>('');
   const [markdown, setMarkdown] = useState<string>('');
-  const [showHelp, setShowHelp] = useState(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved) setApiKey(saved);
-  }, []);
-
-  const saveKey = () => {
-    localStorage.setItem(LS_KEY, apiKey.trim());
-  };
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -63,7 +50,7 @@ export default function MistralOcrPage() {
     setOcrResult(null);
     setMarkdown('');
     try {
-      const body: any = { apiKey: apiKey.trim(), includeImageBase64: ocrIncludeImg };
+      const body: any = { includeImageBase64: ocrIncludeImg };
       if (fileDataUri) body.base64Data = fileDataUri;
       else body.documentUrl = ocrUrl;
 
@@ -83,7 +70,7 @@ export default function MistralOcrPage() {
     }
   };
 
-  const canRun = !!apiKey.trim() && (!!ocrUrl.trim() || !!fileDataUri);
+  const canRun = (!!ocrUrl.trim() || !!fileDataUri);
 
   const onCopy = async () => {
     try {
@@ -108,68 +95,10 @@ export default function MistralOcrPage() {
           <ArrowLeft className="w-4 h-4" />
           <span className="text-sm">Utilities</span>
         </AnimatedLink>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => setShowHelp(true)}
-            className="px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition flex items-center space-x-2"
-          >
-            <HelpCircle className="w-4 h-4" />
-            <span className="text-sm">How to get API key?</span>
-          </button>
-          <input
-            type="password"
-            value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
-            placeholder="Enter Mistral API Key"
-            className="w-44 md:w-72 px-3 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg text-white placeholder-white/40 focus:border-white/30 focus:outline-none"
-          />
-          <button
-            onClick={saveKey}
-            className="px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition flex items-center space-x-2"
-          >
-            <KeyRound className="w-4 h-4" />
-            <span className="text-sm">Save</span>
-          </button>
+        <div className="text-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full">
+          <span className="text-white font-medium">Mistral OCR</span>
         </div>
       </div>
-
-      {/* Help Modal */}
-      {showHelp && (
-        <div className="fixed inset-0 z-40 flex items-center justify-center">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowHelp(false)}></div>
-          <div role="dialog" aria-modal="true" className="relative z-50 w-[92%] max-w-xl bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Get your Mistral API key</h3>
-              <button onClick={() => setShowHelp(false)} className="p-1 rounded-lg hover:bg-white/10">
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <ol className="list-decimal list-inside space-y-2 text-white/90 text-sm">
-              <li>
-                Visit <a href="https://console.mistral.ai/" target="_blank" rel="noopener noreferrer" className="underline">console.mistral.ai</a> and sign in or create an account.
-              </li>
-              <li>
-                Go to <span className="font-medium">API Keys</span> and click <span className="font-medium">Create new key</span>.
-              </li>
-              <li>
-                Copy the key (starts with <code>mistral-</code>) and paste it in the field on this page.
-              </li>
-              <li>
-                Optionally click <span className="font-medium">Save</span> to store it securely in your browser's local storage.
-              </li>
-              <li>
-                Then provide a file or URL and click <span className="font-medium">Run OCR</span>.
-              </li>
-            </ol>
-            <div className="mt-4 text-white/70 text-xs">
-              Tip: PDFs are sent as a data URL to Mistral's <code>/v1/ocr</code> with <code>model: \"mistral-ocr-latest\"</code>. Images are handled similarly via <code>image_url</code>.
-            </div>
-            <div className="mt-6 flex justify-end">
-              <button onClick={() => setShowHelp(false)} className="px-4 py-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20">Close</button>
-            </div>
-          </div>
-        </div>
-      )}
 
       <div className="relative z-10 px-4 md:px-8 py-8 md:py-16">
         <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 relative overflow-hidden group">
@@ -208,7 +137,7 @@ export default function MistralOcrPage() {
                 className="flex items-center justify-center space-x-2 w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white hover:bg-white/20 transition disabled:opacity-50"
               >
                 <Image className="w-4 h-4" />
-                <span>{ocrLoading ? 'Processing...' : (!apiKey.trim() ? 'Enter API Key' : 'Run OCR')}</span>
+                <span>{ocrLoading ? 'Processing...' : 'Run OCR'}</span>
               </button>
               {ocrError && <div className="text-red-400 text-sm">{ocrError}</div>}
 
