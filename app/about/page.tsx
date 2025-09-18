@@ -2,6 +2,12 @@ import { ArrowLeft, Github, Linkedin, Mail, Star } from 'lucide-react';
 import Link from 'next/link';
 import AnimatedLink from '../components/AnimatedLink';
 import MobileMenu from '../components/MobileMenu';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'About Mann Jadwani — tech builder and AI enthusiast leading product and engineering across AI, automation, and data platforms.',
+};
 
 export default function About() {
   return (

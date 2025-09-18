@@ -1,13 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowLeft, File, Folder, FolderOpen, Terminal, Code2, Play, Settings, Search, GitBranch, Users, Zap } from 'lucide-react';
+import { ArrowLeft, File, Folder, FolderOpen, Terminal, Code2, Play, Settings, Search, GitBranch, Users, Zap, Menu, X } from 'lucide-react';
 import AnimatedLink from '../components/AnimatedLink';
+import MobileMenu from '../components/MobileMenu';
 
 type SkillKey = 'tech-development' | 'product-building' | 'ai-innovation' | 'data-business' | 'leadership';
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState<SkillKey>('tech-development');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [openFolders, setOpenFolders] = useState<Record<SkillKey, boolean>>({
     'tech-development': true,
     'product-building': false,
@@ -191,6 +193,10 @@ export default function Skills() {
     }));
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   const getLineColor = (type: string) => {
     switch (type) {
       case 'keyword': return 'text-blue-300';
@@ -208,27 +214,39 @@ export default function Skills() {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black relative overflow-hidden">
       {/* Glassmorphic floating elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-white/3 backdrop-blur-3xl rounded-full"></div>
-        <div className="absolute top-40 right-32 w-24 h-24 bg-white/5 backdrop-blur-2xl rounded-full"></div>
-        <div className="absolute bottom-32 left-16 w-40 h-40 bg-white/4 backdrop-blur-3xl rounded-full"></div>
-        <div className="absolute bottom-20 right-20 w-28 h-28 bg-white/2 backdrop-blur-xl rounded-full"></div>
+        <div className="absolute top-20 left-8 md:left-20 w-16 h-16 md:w-32 md:h-32 bg-white/3 backdrop-blur-3xl rounded-full"></div>
+        <div className="absolute top-40 right-8 md:right-32 w-12 h-12 md:w-24 md:h-24 bg-white/5 backdrop-blur-2xl rounded-full"></div>
+        <div className="absolute bottom-32 left-4 md:left-16 w-20 h-20 md:w-40 md:h-40 bg-white/4 backdrop-blur-3xl rounded-full"></div>
+        <div className="absolute bottom-20 right-8 md:right-20 w-14 h-14 md:w-28 md:h-28 bg-white/2 backdrop-blur-xl rounded-full"></div>
       </div>
 
       {/* Header */}
-      <div className="relative z-10 flex justify-between items-center p-6 border-b border-white/10">
-        <div className="flex items-center space-x-4">
-          <AnimatedLink 
-            href="/"
-            className="flex items-center space-x-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Skills</span>
-          </AnimatedLink>
+      <div className="relative z-10 flex flex-col md:flex-row md:justify-between md:items-center p-4 md:p-6 border-b border-white/10 space-y-4 md:space-y-0">
+        <div className="flex items-center justify-between md:justify-start">
+          <div className="flex items-center space-x-4">
+            <AnimatedLink 
+              href="/"
+              className="flex items-center space-x-2 px-3 py-2 md:px-4 md:py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white/90 hover:bg-white/20 hover:text-white transition-all duration-300"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm">Skills</span>
+            </AnimatedLink>
+            {/* Mobile sidebar toggle */}
+            <button
+              onClick={toggleSidebar}
+              className="md:hidden flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg text-white/90 hover:bg-white/20 transition-all duration-300"
+            >
+              {isSidebarOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+          </div>
+          <div className="md:hidden">
+            <MobileMenu />
+          </div>
         </div>
-        <div className="text-center px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg">
-          <span className="text-white font-medium">Mann Jadwani - Code Editor</span>
+        <div className="text-center px-4 py-2 md:px-6 md:py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg">
+          <span className="text-white font-medium text-sm md:text-base">Mann Jadwani - Code Editor</span>
         </div>
-        <div className="flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-3">
           <div className="flex items-center space-x-2 px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg">
             <GitBranch className="w-4 h-4 text-green-400" />
             <span className="text-white/60 text-sm">main</span>
@@ -238,40 +256,43 @@ export default function Skills() {
       </div>
 
       {/* Main Editor Layout */}
-      <div className="relative z-10 flex h-[calc(100vh-80px)]">
+      <div className="relative z-10 flex h-[calc(100vh-120px)] md:h-[calc(100vh-80px)]">
         {/* Sidebar - File Explorer */}
-        <div className="w-80 bg-white/5 backdrop-blur-xl border-r border-white/10 flex flex-col">
+        <div className={`${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:static inset-y-0 left-0 z-30 w-64 md:w-80 bg-white/5 backdrop-blur-xl border-r border-white/10 flex flex-col transition-transform duration-300 ease-in-out`}>
           {/* Sidebar Header */}
-          <div className="p-4 border-b border-white/10">
+          <div className="p-3 md:p-4 border-b border-white/10">
             <div className="flex items-center space-x-3">
-              <Folder className="w-5 h-5 text-white/70" />
-              <span className="text-white/90 font-medium">EXPLORER</span>
+              <Folder className="w-4 h-4 md:w-5 md:h-5 text-white/70" />
+              <span className="text-white/90 font-medium text-sm md:text-base">EXPLORER</span>
             </div>
           </div>
 
           {/* File Tree */}
-          <div className="flex-1 p-4 overflow-y-auto">
-            <div className="space-y-2">
+          <div className="flex-1 p-3 md:p-4 overflow-y-auto">
+            <div className="space-y-1 md:space-y-2">
               {fileTree[0].children?.map((folder) => (
                 <div key={folder.key}>
                   <div 
-                    className="flex items-center space-x-2 py-2 px-3 rounded-lg hover:bg-white/10 cursor-pointer transition-all duration-200"
+                    className="flex items-center space-x-2 py-2 px-2 md:px-3 rounded-lg hover:bg-white/10 cursor-pointer transition-all duration-200"
                     onClick={() => {
                       toggleFolder(folder.key);
                       setActiveTab(folder.key);
+                      if (window.innerWidth < 768) {
+                        setIsSidebarOpen(false);
+                      }
                     }}
                   >
                     {openFolders[folder.key] ? 
-                      <FolderOpen className="w-4 h-4 text-blue-400" /> : 
-                      <Folder className="w-4 h-4 text-white/60" />
+                      <FolderOpen className="w-3 h-3 md:w-4 md:h-4 text-blue-400" /> : 
+                      <Folder className="w-3 h-3 md:w-4 md:h-4 text-white/60" />
                     }
-                    <span className="text-white/80 text-sm">{folder.name}</span>
+                    <span className="text-white/80 text-xs md:text-sm">{folder.name}</span>
                   </div>
                   {openFolders[folder.key] && (
-                    <div className="ml-6 mt-1">
-                      <div className="flex items-center space-x-2 py-1 px-3 rounded-lg hover:bg-white/5 cursor-pointer">
-                        <File className="w-4 h-4 text-white/50" />
-                        <span className="text-white/70 text-sm">{skillsData[folder.key]?.name}</span>
+                    <div className="ml-4 md:ml-6 mt-1">
+                      <div className="flex items-center space-x-2 py-1 px-2 md:px-3 rounded-lg hover:bg-white/5 cursor-pointer">
+                        <File className="w-3 h-3 md:w-4 md:h-4 text-white/50" />
+                        <span className="text-white/70 text-xs md:text-sm">{skillsData[folder.key]?.name}</span>
                       </div>
                     </div>
                   )}
@@ -281,36 +302,44 @@ export default function Skills() {
           </div>
 
           {/* Sidebar Footer */}
-          <div className="p-4 border-t border-white/10">
+          <div className="p-3 md:p-4 border-t border-white/10">
             <div className="flex items-center justify-between text-white/50 text-xs">
               <div className="flex items-center space-x-2">
-                <Users className="w-4 h-4" />
+                <Users className="w-3 h-3 md:w-4 md:h-4" />
                 <span>28 Projects</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Zap className="w-4 h-4" />
+                <Zap className="w-3 h-3 md:w-4 md:h-4" />
                 <span>Active</span>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Sidebar Backdrop for Mobile */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-20 md:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
         {/* Main Editor Area */}
         <div className="flex-1 flex flex-col">
           {/* Tabs */}
-          <div className="flex bg-white/5 backdrop-blur-xl border-b border-white/10">
+          <div className="flex bg-white/5 backdrop-blur-xl border-b border-white/10 overflow-x-auto">
             {Object.entries(skillsData).map(([key, data]) => (
               <button
                 key={key}
                 onClick={() => setActiveTab(key as SkillKey)}
-                className={`flex items-center space-x-2 px-4 py-3 border-r border-white/10 text-sm transition-all duration-200 ${
+                className={`flex items-center space-x-1 md:space-x-2 px-2 py-2 md:px-4 md:py-3 border-r border-white/10 text-xs md:text-sm transition-all duration-200 whitespace-nowrap ${
                   activeTab === key 
                     ? 'bg-white/10 text-white border-b-2 border-blue-400' 
                     : 'text-white/70 hover:bg-white/5 hover:text-white'
                 }`}
               >
-                <span>{data.icon}</span>
-                <span>{data.name}</span>
+                <span className="text-xs md:text-sm">{data.icon}</span>
+                <span className="hidden sm:block">{data.name}</span>
               </button>
             ))}
           </div>
@@ -318,18 +347,18 @@ export default function Skills() {
           {/* Code Editor */}
           <div className="flex-1 flex">
             {/* Line Numbers */}
-            <div className="w-16 bg-white/5 backdrop-blur-xl border-r border-white/10 p-4 text-right">
+            <div className="w-8 md:w-16 bg-white/5 backdrop-blur-xl border-r border-white/10 p-2 md:p-4 text-right">
               {skillsData[activeTab]?.content.map((line) => (
-                <div key={line.line} className="text-white/40 text-sm font-mono leading-6">
+                <div key={line.line} className="text-white/40 text-xs md:text-sm font-mono leading-5 md:leading-6">
                   {line.line}
                 </div>
               ))}
             </div>
 
             {/* Code Content */}
-            <div className="flex-1 p-4 overflow-y-auto bg-white/2 backdrop-blur-xl">
+            <div className="flex-1 p-2 md:p-4 overflow-y-auto bg-white/2 backdrop-blur-xl">
               {skillsData[activeTab]?.content.map((line) => (
-                <div key={line.line} className="font-mono text-sm leading-6 flex">
+                <div key={line.line} className="font-mono text-xs md:text-sm leading-5 md:leading-6 flex">
                   <span className={getLineColor(line.type)}>
                     {line.code || '\u00A0'}
                   </span>
@@ -337,8 +366,8 @@ export default function Skills() {
               ))}
             </div>
 
-            {/* Minimap */}
-            <div className="w-20 bg-white/5 backdrop-blur-xl border-l border-white/10 p-2">
+            {/* Minimap - Hidden on Mobile */}
+            <div className="hidden lg:block w-20 bg-white/5 backdrop-blur-xl border-l border-white/10 p-2">
               <div className="space-y-1">
                 {skillsData[activeTab]?.content.map((_, index) => (
                   <div key={index} className="h-1 bg-white/20 rounded-full"></div>
@@ -348,21 +377,21 @@ export default function Skills() {
           </div>
 
           {/* Status Bar */}
-          <div className="flex items-center justify-between px-4 py-2 bg-white/5 backdrop-blur-xl border-t border-white/10 text-xs text-white/60">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span>Ready</span>
+          <div className="flex items-center justify-between px-2 py-1 md:px-4 md:py-2 bg-white/5 backdrop-blur-xl border-t border-white/10 text-xs text-white/60">
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <div className="flex items-center space-x-1 md:space-x-2">
+                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full"></div>
+                <span className="hidden md:block">Ready</span>
               </div>
-              <span>UTF-8</span>
-              <span>TypeScript React</span>
+              <span className="hidden md:block">UTF-8</span>
+              <span className="hidden sm:block">TypeScript React</span>
             </div>
-            <div className="flex items-center space-x-4">
-              <span>Ln {skillsData[activeTab]?.content.length || 0}, Col 1</span>
-              <span>Spaces: 2</span>
+            <div className="flex items-center space-x-2 md:space-x-4">
+              <span className="hidden md:block">Ln {skillsData[activeTab]?.content.length || 0}, Col 1</span>
+              <span className="hidden lg:block">Spaces: 2</span>
               <div className="flex items-center space-x-1">
-                <Terminal className="w-4 h-4" />
-                <span>Skills Terminal</span>
+                <Terminal className="w-3 h-3 md:w-4 md:h-4" />
+                <span className="hidden md:block">Skills Terminal</span>
               </div>
             </div>
           </div>

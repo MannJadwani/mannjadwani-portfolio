@@ -1,13 +1,19 @@
 import Spline from '@splinetool/react-spline/next';
 import AnimatedLink from './components/AnimatedLink';
 import MobileMenu from './components/MobileMenu';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Mann Jadwani — AI, product, and full‑stack engineering. Explore projects, skills, and ways to collaborate.',
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section with Spline 3D Scene */}
-      <section className="flex-1 relative justify-center items-center flex overflow-hidden">
-  <div className="md:absolute inset-0 z-0  w-full justify-center items-center overflow-hidden h-[500px] md:h-full "
+      <section className="h-screen relative justify-center items-center flex overflow-hidden">
+  <div className="md:absolute inset-0 z-0  w-full justify-center items-center overflow-hidden h-[120vh]"
      
   
   >
@@ -61,6 +67,13 @@ export default function Home() {
               className="px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/90 font-medium hover:bg-white/20 hover:border-white/30 hover:text-white hover:shadow-lg hover:shadow-white/20 transition-all duration-500 ease-out relative overflow-hidden group"
             >
               <span className="relative z-10">Skills</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+            </AnimatedLink>
+            <AnimatedLink
+              href="/utility"
+              className="px-6 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/90 font-medium hover:bg-white/20 hover:border-white/30 hover:text-white hover:shadow-lg hover:shadow-white/20 transition-all duration-500 ease-out relative overflow-hidden group"
+            >
+              <span className="relative z-10">Utilities</span>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
             </AnimatedLink>
           </div>

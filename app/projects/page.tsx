@@ -2,6 +2,12 @@ import { ArrowLeft, ExternalLink, Github, Star, Zap, Database, Brain, Smartphone
 import Link from 'next/link';
 import AnimatedLink from '../components/AnimatedLink';
 import MobileMenu from '../components/MobileMenu';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Explore 28 projects across AI, automation, web platforms, data panels, and blockchain by Mann Jadwani.',
+};
 
 export default function Projects() {
   const projects = [
