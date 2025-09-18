@@ -39,17 +39,38 @@ export async function POST(req: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify(payload),
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      return new Response(JSON.stringify({ error: 'Mistral OCR error', details: data }), { status: res.status });
+    // Parse JSON if possible; otherwise capture raw text
+    let parsed: any = null;
+    let rawText: string | undefined;
+    try {
+      parsed = await res.clone().json();
+    } catch {
+      try {
+        rawText = await res.text();
+      } catch {
+        rawText = undefined;
+      }
     }
 
-    return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    if (!res.ok) {
+      return new Response(
+        JSON.stringify({ error: 'Mistral OCR error', status: res.status, details: parsed || undefined, raw: rawText }),
+        { status: res.status, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (parsed) {
+      return new Response(JSON.stringify(parsed), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    // Fallback if successful but non-JSON (unexpected)
+    return new Response(JSON.stringify({ warning: 'Non-JSON success response', raw: rawText }), { status: 200, headers: { 'Content-Type': 'application/json' } });
   } catch (err: any) {
     return new Response(JSON.stringify({ error: 'Server error', details: err?.message || String(err) }), { status: 500 });
   }
